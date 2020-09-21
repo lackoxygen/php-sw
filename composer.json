@@ -1,0 +1,20 @@
+{
+    "name": "lackoxygen/php-sw",
+    "require": {
+        "php": ">=7.2"
+    },
+    "authors": [
+        {
+            "name": "lackoxygen",
+            "email": "lackoxygen@qq.com"
+        }
+    ],
+    "require-dev": {
+        "swoole/ide-helper": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Core\\": "src/"
+        }
+    }
+}
