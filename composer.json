@@ -15,6 +15,7 @@
     "autoload": {
         "psr-4": {
             "Core\\": "src/"
-        }
+        },
+        "files": ["src/function.php"]
     }
 }
