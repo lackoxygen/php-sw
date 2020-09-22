@@ -20,7 +20,7 @@ $udpServer->on('packet', function (Swoole\Server $server, string $data, array $c
 
     $connect = new Swoole\Coroutine\Client(SWOOLE_SOCK_UDP);
 
-    if(!$connect->connect($client['address'], $client['port'])){
+    if(!$connect->connect($client['address'], 8088)){
         println('connect fail');
         return;
     }
