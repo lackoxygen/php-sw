@@ -17,7 +17,7 @@ for ($port = 1; $port <= 65535; $port ++){
     $ports[] = $port;
 }
 
-$chunks = array_chunk($ports, 2000);
+$chunks = array_chunk($ports, 1000);
 
 $pool = new Swoole\Process\Pool(count($chunks));
 
