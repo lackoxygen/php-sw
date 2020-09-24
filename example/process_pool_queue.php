@@ -19,12 +19,8 @@ $pool->on('WorkerStop', function (\Swoole\Process\Pool $pool, $workerId){
     println("#{$workerId} stop");
 });
 
-$pool->on('Message', function (\Swoole\Process\Pool $pool, $workerId){
-    var_dump(func_get_args());
+$pool->on('Message', function (\Swoole\Process\Pool $pool, $data){
+    println("#recv sys -> {$data}");
 });
-
-$queue = msg_get_queue($msgQueueKey);
-
-msg_send($queue, 1, 'hello world', false);
 
 $pool->start();

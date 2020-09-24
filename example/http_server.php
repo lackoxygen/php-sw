@@ -10,6 +10,7 @@ require __DIR__ .'/../bootstrap.php';
 use Core\Server\HttpServer;
 use Swoole\Http\Request;
 use Swoole\Http\Response;
+use Swoole\Runtime;
 
 $httpServer = new HttpServer(
     '0.0.0.0',
@@ -17,6 +18,8 @@ $httpServer = new HttpServer(
 );
 
 $httpServer->on('request', function (Request $request, Response $response){
+    $sleep = $request->get['sleep'];
+    sleep($sleep);
     $response->write("connect id "); //write 就不要用end
     $response->write($response->fd);
 });
@@ -27,6 +30,7 @@ $httpServer->on('start', function (Swoole\Http\Server $server){
 
 $httpServer->on('workerStart', function (Swoole\Http\Server $server, $pid){
     println("worker pid #{$pid} start");
+    Runtime::enableCoroutine();
 });
 
 $httpServer->on('workerStop', function (Swoole\Http\Server $server, $pid){
