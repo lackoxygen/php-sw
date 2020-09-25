@@ -24,6 +24,7 @@ $tcpServer->on('start', function (Server $server){
 
 $tcpServer->on('receive', function(Server $server, $fd, $from_id, $data) {
     $httpRequest = new HttpRequest($data);
+    println($httpRequest->query('name'));
     $httpResponse = new HttpResponse('connection id '.$fd);
     $server->send($fd, $httpResponse->getContent());
     $server->exists($fd) && $server->close($fd);
